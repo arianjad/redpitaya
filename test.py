@@ -12,10 +12,118 @@ ip = '169.254.174.98'
 rp_s = scpi.scpi(ip)
 # Initialize connection
 
-class AnalogOut:
-	def __init__(self,sourceNum,waveform,freq)
-		self.source = str(sourceNum)
+def SetDecimation(dec,rp):
+	rp.tx_txt('ACQ:DEC '+str(dec))
 
+def StartAcquisition(rp):
+	rp.tx_txt('ACQ:START')
+
+
+class FastAnalogOutput:
+	def __init__(self,sourceNum):
+		self.source = str(sourceNum)
+		self.waveform = 'SINE'
+		self.freq = 1000
+		self.ampl = 1
+		self.state = 'OFF'
+		self.offset = 0
+		self.phase = 0
+		self.duty = 50
+		self.custom
+		self.burst = 'OFF'
+		self.count = 1
+		self.time = 1
+		self.trig = None
+
+	def Enable(self):
+	
+	def Disable(self):
+
+	def SetFreq(self, freq):
+
+	def SetWave(self,waveform):
+
+	def SetAmpl(self,ampl):
+
+	def SetOffset(self,offset):
+
+	def SetPhase(self,phase):
+
+	def SetDuty(self,duty):
+
+	def SetArbWave(self,array):
+
+	def SetBurst(self,burst):
+
+	def EnableBurst(self):
+
+	def DisableBurst(self):
+
+	def SetTrigger(self,trig):
+
+	def ResetDefaults(self):
+
+
+		
+
+class FastAnalogInput():
+	def __init__(self,sourcNum,RedPitaya):
+		self.source = sourceNum
+		self.rp = RedPitaya
+		self.dec = 1
+		self.avg = 'ON'
+		self.trigSource = 'DISABLED'
+		self.trigStatus
+		self.trigTime =
+		self.trigCounter = 
+		self.trigGain = 
+		self.trigLevel =
+		self.dataUnits = 
+		self.dataFormat = 
+
+
+
+	def StartAcq(self):
+
+	def StopAcq(self):
+
+	def ResetAcq(self):
+
+	def SetDec(self):
+
+	def SetAvg(self):
+
+	def EnableAvg(self):
+
+	def DisableAvg(self):
+
+	def GetDec(self):
+
+	def GetAvg(self):
+
+	def SetTrig(self):
+
+	def TrigNow(self):
+
+	def TrigState(self):
+
+	def SetTrigDelay(self):
+
+	def GetTrigDelay(self):
+
+	def SetGain(self):
+
+	def SetTrigLevel(self):
+
+	def GetTrigLevel(self):
+
+	def SetDataUnits(self):
+
+	def SetDataFormat(self):
+
+	def ReadData(self):
+
+	def GetBuffSize(self):
 
 
 
@@ -48,6 +156,6 @@ def ConfigFreq(sourceNum,)
 
 
 def ConfigGenerator(sourceNum,waveform,freq,ampl,burst):
-	source='SOUR'+str(sourceNumber)
+	source='SOUR'+sourceNum
 	rp_s.tx_txt('GEN:RST')
 	rp_s.tx_txt(FormatMessage(source,''))
